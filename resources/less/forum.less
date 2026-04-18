@@ -1,0 +1,39 @@
+// Reserve layout space for inline post images to prevent CLS.
+// The server-side IMG XSL template wraps every image in <span class="cls-img-wrap">
+// with an inline `style="aspect-ratio: …"` placeholder. Once the image actually
+// loads, JS overrides --cls-img-ratio with the real natural ratio.
+//
+// Styles are intentionally NOT scoped to .Post-body — wrappers also appear in
+// notifications, mention previews, search snippets, and the composer preview,
+// all of which benefit from CLS prevention too.
+
+.cls-img-wrap {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    // The inline style on the element sets either:
+    //   aspect-ratio: <w> / <h>;       (when width+height are known)
+    //   aspect-ratio: var(--cls-img-ratio, 16 / 9);
+    // Either form ensures a non-zero placeholder height is reserved up front.
+    background-color: rgba(127, 127, 127, 0.08);
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+    line-height: 0;
+    margin: 0;
+}
+
+.cls-img-wrap--error {
+    background-color: rgba(220, 53, 69, 0.06);
+}
+
+.cls-img-wrap > img.cls-img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    // Preserve the image's own aspect ratio inside the (possibly slightly off)
+    // placeholder.
+    object-fit: contain;
+    // Hide alt text bleed before the image arrives.
+    color: transparent;
+}

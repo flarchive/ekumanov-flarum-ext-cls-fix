@@ -1,0 +1,9 @@
+vendor/
+node_modules/
+js/dist/*.map
+.phpunit.result.cache
+.idea/
+.vscode/
+*.DS_Store
+.claude/
+discuss-posts/
