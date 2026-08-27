@@ -1,0 +1,33 @@
+import { extend } from 'flarum/common/extend';
+
+/**
+ * Core only asks for the next page of posts once the end of the loaded stream
+ * comes within 300px of the bottom of the viewport. On a phone that request is
+ * still in flight when the site footer scrolls into view, so the arriving posts
+ * shove the footer off screen — a single ~0.9 layout shift, which on its own is
+ * enough to make the whole page view "poor" for CLS.
+ *
+ * Asking for the same page a viewport and a half earlier makes the stream grow
+ * while everything below it is still off screen, and off-screen movement costs
+ * nothing. No extra requests: the same pages are fetched, just sooner.
+ */
+const LOOK_AHEAD_VIEWPORTS = 1.5;
+
+export default function extendPostStreamLoadAhead() {
+    // PostStream is lazy-loaded, so extend it by module path rather than by import.
+    extend('flarum/forum/components/PostStream', 'loadPostsIfNeeded', function () {
+        const stream = this.stream;
+
+        if (!stream || stream.paused || stream.pagesLoading) return;
+        if (typeof stream.count !== 'function' || stream.visibleEnd >= stream.count()) return;
+
+        const last = this.element && this.element.querySelector('.PostStream-item[data-index="' + (stream.visibleEnd - 1) + '"]');
+        if (!last) return;
+
+        const lookAhead = Math.max(300, window.innerHeight * LOOK_AHEAD_VIEWPORTS);
+
+        if (last.getBoundingClientRect().bottom < window.innerHeight + lookAhead) {
+            stream.loadNext();
+        }
+    });
+}
