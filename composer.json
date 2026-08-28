@@ -1,0 +1,64 @@
+{
+    "name": "ekumanov/flarum-ext-cls-fix",
+    "description": "Reserves layout space for inline images in posts to eliminate Cumulative Layout Shift (CLS).",
+    "keywords": [
+        "flarum",
+        "extension",
+        "cls",
+        "performance",
+        "images"
+    ],
+    "type": "flarum-extension",
+    "license": "MIT",
+    "require": {
+        "flarum/core": "^2.0@beta",
+        "php": "^8.3"
+    },
+    "require-dev": {
+        "flarum/testing": "^2.0@beta"
+    },
+    "authors": [
+        {
+            "name": "ekumanov",
+            "email": "ekumanov@users.noreply.github.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Ekumanov\\ClsFix\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Ekumanov\\ClsFix\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "flarum-extension": {
+            "title": "CLS Fix",
+            "category": "feature",
+            "icon": {
+                "name": "fas fa-image",
+                "backgroundColor": "#4A90D9",
+                "color": "#fff"
+            }
+        }
+    },
+    "scripts": {
+        "test": [
+            "@test:unit",
+            "@test:integration"
+        ],
+        "test:unit": "phpunit -c tests/phpunit.unit.xml",
+        "test:integration": "phpunit -c tests/phpunit.integration.xml",
+        "test:setup": "@php tests/integration/setup.php"
+    },
+    "scripts-descriptions": {
+        "test": "Runs all tests.",
+        "test:unit": "Runs all unit tests.",
+        "test:integration": "Runs all integration tests.",
+        "test:setup": "Sets up a database for use with integration tests. Execute this only once."
+    },
+    "minimum-stability": "beta",
+    "prefer-stable": true
+}
