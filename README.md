@@ -2,13 +2,17 @@
 
 > **Read-only archive of released versions of ekumanov/flarum-ext-cls-fix.** Not for installation: use [Packagist](https://packagist.org/packages/ekumanov/flarum-ext-cls-fix) or the [upstream repository](https://github.com/ekumanov/flarum-ext-cls-fix).
 
-**0** versions archived · Latest: [`v1.0.4`](https://github.com/flarchive/ekumanov-flarum-ext-cls-fix/tree/archive/v1.0.4) · License: `MIT` · Flarum: `^2.0@beta`
+**5** versions archived · Latest: [`v1.0.4`](https://github.com/flarchive/ekumanov-flarum-ext-cls-fix/tree/archive/v1.0.4) · License: `MIT` · Flarum: `^2.0@beta`
 
 ## Archived Versions
 
 | Version | Released | Flarum | Source |
 |---|---|---|---|
-| — | — | — | — |
+| `v1.0.0` | 2026-04-18 | `^2.0@beta` | [Browse](https://github.com/flarchive/ekumanov-flarum-ext-cls-fix/tree/archive/v1.0.0) |
+| `v1.0.1` | 2026-06-13 | `^2.0@beta` | [Browse](https://github.com/flarchive/ekumanov-flarum-ext-cls-fix/tree/archive/v1.0.1) |
+| `v1.0.2` | 2026-08-27 | `^2.0@beta` | [Browse](https://github.com/flarchive/ekumanov-flarum-ext-cls-fix/tree/archive/v1.0.2) |
+| `v1.0.3` | 2026-08-27 | `^2.0@beta` | [Browse](https://github.com/flarchive/ekumanov-flarum-ext-cls-fix/tree/archive/v1.0.3) |
+| `v1.0.4` | 2026-08-28 | `^2.0@beta` | [Browse](https://github.com/flarchive/ekumanov-flarum-ext-cls-fix/tree/archive/v1.0.4) |
 
 Catalog entry: [packages/ekumanov-flarum-ext-cls-fix.json](https://github.com/flarchive/archive-index/blob/main/packages/ekumanov-flarum-ext-cls-fix.json)
 
